@@ -1,0 +1,38 @@
+header {
+    background:#A1869E;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    .wrapper{
+        width: 80%;
+        margin: auto;
+        overflow:hidden;
+        nav {
+             
+            a {
+                float: left;
+                img{
+                    display: block;
+                    width: 50%;
+                    height: auto;
+                }
+            }
+            ul {
+                list-style: none;
+                position: relative; 
+                left: 40%;
+                li {
+                    float: left;
+                    font-size: 16px;
+                    a {
+                        display: block; 
+                        padding: 20px;
+                        color: #0B1D51;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}    
+    

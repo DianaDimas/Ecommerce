@@ -1,17 +1,5 @@
-# Getting Started with Create React App
+# Proyecto de Ecommerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Este proyecto de ecommerce esta elaborado en React Js.
 
 ![React App - Google Chrome 2020-12-29 21-06-33](https://user-images.githubusercontent.com/69471765/103326304-bf5d4580-4a1d-11eb-87bf-8aa32b605e29.gif)

@@ -5,24 +5,27 @@
     margin: auto;
     display: block;
     text-align: center;
-    font-family: 'Lobster Two', cursive;
     img{
         width: 100%;
     }
-    h2{
+    h3{
         color: #0B1D51;
     }
     p{
         padding: 10px 0;
+        font-size: 16px;
+        text-align: center;
+        color: #fff;
+                
     }
     button {
-        font-family: 'Lobster Two', cursive;
         border: none;
         outline: 0;
         padding: 12px;
-        color: white;
+        color: #fff;
         background-color: #0B1D51;
         text-align: center;
+        font-family: 'Bellota', cursive;
         cursor: pointer;
         width: 100%;
         font-size: 14px;

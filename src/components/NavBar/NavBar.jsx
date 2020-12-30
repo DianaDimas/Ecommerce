@@ -1,23 +1,33 @@
-import React from "react"
+import React, {useState} from 'react';
 import logo from "./logo.png"
 import './navbar.scss'
 import CartWidget from '../CartWidget/CartWidget';
+import { NavLink } from 'react-router-dom'
+
 
 const NavBar = () => {
+    // eslint-disable-next-line no-unused-vars
+    const [links, setLinks] = useState([
+        {nombre: 'Quiénes Somos', url: '/quienesSomos'}, 
+        {nombre: 'Mugs', url: '/mugs'}, 
+        {nombre: 'Contáctenos', url: '/contacto'}
+      ])
     
     return(
-        <nav className="navbar-items">
-            <div className="navbar-logo">
-                <img src={logo} alt={"logo"}/>
-            </div>
-            <ul className="nav-menu">
-                <li className="nav-link"><a href="#quienes">Quiénes Somos</a></li>
-                <li className="nav-link"><a href="#mugs">Mugs</a></li>
-                <li className="nav-link"><a href="#vestir">Para Vestir</a></li>
-                <li className="nav-link"><a href="#contacto">Contáctenos</a></li>
-                <li className="nav-link-cart"><a href="#cart"><CartWidget/></a></li>
-            </ul>
+        <header >
+            <nav className="navbar-items">
+                <NavLink to='/' className="navbar-logo">
+                    <img src={logo} alt={"logo"}/>
+                </NavLink>
+                <ul className="nav-menu">
+                    {links.map((link, i) => {
+                    return (<li  key={i}><NavLink className="nav-link" to={link.url}>{link.nombre}</NavLink></li>)
+                    })}
+                    <NavLink to='/cart'><CartWidget/></NavLink>
+                </ul>
             </nav>
+        </header>
+        
     )
     
 }

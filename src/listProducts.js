@@ -8,25 +8,29 @@ const products = [
         id: 1,
         name:"Mug Acero Inoxidable",
         description:"Mug de acero inox. con mosquetón. Capacidad: 500 ml.",
-        img: product1
+        img: product1,
+        price: "COP $20.000"
     },
     {
         id: 2,
         name:"Mug Rústico",
         description:"Mug con look rústico y sencillo. Capacidad: 350 ml.",
-        img: product2
+        img: product2,
+        price: "COP $10.000"
     },
     {
         id: 3,
         name:"Mug Porcelana",
-        description:"Mug de porcelana personalizable. Capacidad: 320 ml.",
-        img: product3
+        description:"Mug personalizable de porcelana. Capacidad: 320 ml.",
+        img: product3,
+        price: "COP $16.000"
     },
     {
         id: 4,
         name:"Mug Cerámica",
         description:"Mug de cerámica con diseño. Capacidad: 320 ml.",
-        img:product4
+        img:product4,
+        price: "COP $11.000"
     }
 ]
 

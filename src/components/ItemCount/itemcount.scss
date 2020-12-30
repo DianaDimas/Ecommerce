@@ -1,15 +1,13 @@
 .card-count {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 25%;
+    max-width: 300px;
     border-radius: 5px;
     display: block;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    color: black;
-    font-family: 'Lobster Two', cursive;
-    h3{
+    color: #0B1D51;
+    h5{
+      text-align: justify;
       padding: 10px 0px ;
     }
     ._grid {
@@ -49,7 +47,7 @@
         padding: .35em .75em;
       }
       .product-add {
-        font-family: 'Lobster Two', cursive;
+        font-family: 'Bellota', cursive;
         font-size: .875em;
         margin-top: 3.35rem;
         background-color: #797596;

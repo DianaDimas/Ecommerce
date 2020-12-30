@@ -1,0 +1,26 @@
+.card-product-detail {
+    background: #ffffff;
+    border: 2px solid #A1869E;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+    .info-detail{
+        margin: auto 0;
+        .img-detail{
+            padding: 10px;
+        }
+        h3{
+            color: #0B1D51;
+        }
+        .card-description{
+            font-size: 16px;
+        }
+        .card-price{
+            font-size: 20px;
+            color: red;
+        }
+    }
+    
+}

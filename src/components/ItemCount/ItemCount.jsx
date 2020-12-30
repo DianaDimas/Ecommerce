@@ -13,7 +13,7 @@ const ItemCount = ({stock, initial}) =>{
 
     return(
         <div className="card-count">
-            <h3>Item</h3>
+            <h5>Cantidad:</h5>
             <div className="_grid">
               <button className="_btn _column product-subtract" onClick={onRest} disabled={contador === initial} ><FontAwesomeIcon icon={faMinus} /></button>
               <div className="_column product-qty">{contador}</div>

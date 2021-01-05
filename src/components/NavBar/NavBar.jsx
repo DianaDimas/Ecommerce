@@ -9,7 +9,8 @@ const NavBar = () => {
     // eslint-disable-next-line no-unused-vars
     const [links, setLinks] = useState([
         {nombre: 'Quiénes Somos', url: '/quienesSomos'}, 
-        {nombre: 'Mugs', url: '/mugs'}, 
+        {nombre: 'Mugs', url: '/category/mugs'}, 
+        {nombre: 'Para Vestir', url: '/category/vestir'},
         {nombre: 'Contáctenos', url: '/contacto'}
       ])
     
@@ -27,8 +28,6 @@ const NavBar = () => {
                 </ul>
             </nav>
         </header>
-        
     )
-    
 }
 export default NavBar;

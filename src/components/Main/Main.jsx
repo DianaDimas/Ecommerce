@@ -19,7 +19,7 @@ const Main = ({greeting}) => {
                     <Quienes />
                 </Route>
 
-                <Route path="/mugs">
+                <Route path="/category/:categoryName?">
                     <ItemListContainer/>
                 </Route>
 

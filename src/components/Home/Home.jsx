@@ -10,6 +10,7 @@ const Home= ({greeting}) => {
             <div>
             <h1>{greeting}</h1>
             <span>¡Nos alegra verte de nuevo!</span>
+            <span>A continuación todos nuestros productos</span>
             </div>
             <ItemListContainer/>
         </section>

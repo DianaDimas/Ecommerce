@@ -4,6 +4,7 @@ import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer'
 import {Switch, Route} from "react-router-dom"
 import Home from '../Home/Home'
 import Quienes from '../Quienes/Quienes';
+import Cart from '../Cart/Cart'
 
 const Main = ({greeting}) => {
 
@@ -32,7 +33,7 @@ const Main = ({greeting}) => {
                 </Route>
 
                 <Route path="/cart">
-                    
+                    <Cart/>
                 </Route>
 
             </Switch>

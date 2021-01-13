@@ -8,10 +8,75 @@
     display: block;
     text-align: center;
     align-items: center;
-    
+        
     p{
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
+
+    .cf:before,.cf:after {content: " ";display: table;}
+    .cf:after {clear: both;}
+    .cf {*zoom: 1;}
+
+    .wrap {
+        width: 75%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 5% 0;
+        margin-bottom: 5em;
+    
+    }
+    .heading {
+        //display: flex;
+        //justify-content: center;
+        //align-items: center;
+        margin: 0em 9em;
+        padding: 1em 0;
+        border-bottom: 2px solid #BBADA0;
+       
+        h2 {
+            color:#0B1D51;
+            float: left;
+        }
+        .continue {
+            font-family: 'Bellota', cursive;
+            text-decoration: none;
+            letter-spacing: -.015em;
+            font-size: .75em;
+            padding: 1em;
+            color: #fff;
+            background: #797596;
+            font-weight: bold;
+            border-radius: 50px;
+            float: right;
+            text-align: right;
+            
+            &:after {
+                content: "\276f";
+                padding: .5em;
+                position: relative;
+                right:0;
+            }
+            &:hover , &:focus, &:active {
+                background: #0B1D51;
+                &:after {
+                    right: -10px;
+                }
+            }
+        }
+    }
+    .cart {
+        padding: 1em 0 ;
+       
+        .items {
+            display: block;
+            width: 100%;
+            padding: 1.5em;
+            border-bottom: 1px solid #fafafa;
+            &.even {
+                background: #fafafa;
+            }
+        }
+    }   
 }

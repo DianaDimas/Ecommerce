@@ -1,83 +1,37 @@
-import React, {createContext, useState, useEffect} from 'react'
-import {Products} from '../listProducts';
+import React, {createContext, useState, useContext} from 'react'
 
-export const CartContext = createContext()
+const StoreContext = createContext()
+const useCartContext = () => useContext(StoreContext)
 
-const CartContextProvider = ({children}) =>{
-    
-    const [loading, setLoading] = useState(true);
-    const [allProducts, setAllProducts] = useState([]);
-    
-    useEffect(() => {
-        setTimeout(() => {
-            const promise = new Promise((resolve, reject) => {
-                resolve(Products);
-            });
-            promise.then(Products => {
-                setAllProducts(Products);
-                setLoading(false) 
-            })
-        }, 500);
-    }, [])
-    
-    const stocks = 10
-    const initial = 0
-    const [stock, setSotck] = useState(stocks)
-    const [count, setCount] = useState(initial)
-    const [add, setAdd] = useState(false)
-    const [toggleItem, setToggleItem] = useState(false)
-    const [cart, setCart] = useState([])
 
-    const increase = () => { 
-        if(count < stocks){
-            setCount(count + 1)
-            setSotck(stock - 1)
+export const StoreProvider = ({children}) =>{
+
+    const [products, setProducts] = useState([])
+
+    const addItem = (item, quantity) => {
+        const inCartList = products.find((i) => i.id === item.id)
+
+        if(inCartList){
+            inCartList.quantity += quantity
+            setProducts([...products])
+        } else {
+            setProducts([...products, {...item, quantity}])
         }
     }
 
-    const decrease = () => { 
-        if(count > initial){
-            setCount(count - 1)
-            setSotck(stock + 1)
-        }
+    const removeItem = (id) => {
+        products.splice(
+            products.findIndex((i) => i.id === id), 1
+        )
+        setProducts([...products])
     }
-
-    useEffect(() => {
-        setAdd(false)
-    }, [toggleItem])
     
-    const removeItem = (e) => {
-        // eslint-disable-next-line array-callback-return
-        const itemDeleted = cart.filter(function(value, i, array){
-            if (value.id !== e.target.id){
-                return array
-            }
-        })
-        setCart(itemDeleted)
-    }
-
     return(
-        <CartContext.Provider value = {{
-            allProducts: allProducts,
-            loading : loading,
-            setLoading: setLoading,
-            toggleItem: toggleItem,
-            setToggleItem: setToggleItem,
-            initial: initial,
-            stocks: stocks,
-            stock: stock,
-            setSotck: setSotck,
-            increase: increase,
-            decrease: decrease,
-            add: add,
-            setAdd: setAdd,
-            cart: cart,
-            setCart: setCart,
-            removeItem: removeItem,
-        }}>
+        <StoreContext.Provider 
+        value = {{ products, addItem, removeItem }}>
             {children}
-        </CartContext.Provider>
+        </StoreContext.Provider>
     )
 
 }
-export default CartContextProvider
+export default useCartContext

@@ -19,7 +19,10 @@
         }
         .card-price{
             font-size: 20px;
-            color: red;
+            color: #c66;
+            &:before{
+                content: 'COP $';
+            }
         }
         .btn-finalizar{
             font-family: 'Bellota', cursive;
@@ -30,7 +33,7 @@
             font-weight: 300;
             border-radius: 5px;
             font-size: .875em;
-            margin-top: 3.35rem;
+            margin-top: 0.45rem;
             background-color: #797596;
             color: #ecf0f1;
             width: 300px;

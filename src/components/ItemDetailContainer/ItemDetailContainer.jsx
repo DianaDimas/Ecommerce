@@ -1,37 +1,38 @@
-  
-import React, {useContext} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useParams} from "react-router-dom";
+import {Products} from '../../listProducts';
 import ItemDetail from '../ItemDetail/ItemDetail' ;
-import {CartContext} from '../../Context/CartContext';
-import { useParams } from 'react-router-dom';
+
+const getItem = (productId) => {
+    return new Promise(result =>  setTimeout(() => 
+        { result(Products.find(product =>
+            product.id===parseInt(productId)))  
+        },500)) 
+} 
 
 const ItemDetailContainer = () => {
+    const [loading, setLoading] = useState(false);
+    const [item, setItem] = useState([]);
     
-    const {loading, allProducts} = useContext(CartContext)
-    console.log(allProducts)
-    const productId = useParams()
-    console.log(productId)
-                
+    const {productId} = useParams();
+    
+    useEffect(() =>{
+        setLoading(true);
+        getItem(productId).then((product) => {
+            setItem(product);
+            setLoading(false)    
+        });
+
+    }, [productId])
+
+    
     return(
         <>
-            { loading ? 
-                "Cargando Información..." : allProducts.map((product)=>{
-                    return(
-                        product.id ===productId.id ? 
-                        <ItemDetail 
-                            key={product.id}
-                            item={{
-                                    id: product.id,
-                                    name : product.name,
-                                    description : product.description,
-                                    price : product.price,
-                                    productId: productId.id
-                                }}
-                        /> 
-                        : "null"
-                    )
-                })
-            }
+        
+        {loading ? "Cargando Información..." : <ItemDetail item={item} />}
+
         </>
-    )   
+        
+)   
 }
 export default ItemDetailContainer;

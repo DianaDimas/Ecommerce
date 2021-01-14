@@ -1,5 +1,14 @@
-div{
-    font-size: 18px;
-    color: #A1869E;
-    display: block;
+.cart-widget{
+    text-decoration: none;
+    .cart-icon{
+        font-size: 18px;
+        color: #A1869E;
+        display: block;}
+    .items{
+        background:#A1869E ;
+        color: #ffffff;
+        font-size: 14px;
+        border-radius: 50%;
+        padding: 0px 5px;
+    }
 }

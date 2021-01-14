@@ -7,10 +7,11 @@ const useCartContext = () => useContext(StoreContext)
 export const StoreProvider = ({children}) =>{
 
     const [products, setProducts] = useState([])
+    const [isInCart, setIsInCart] = useState(false)
 
     const addItem = (item, quantity) => {
         const inCartList = products.find((i) => i.id === item.id)
-
+        setIsInCart(true)
         if(inCartList){
             inCartList.quantity += quantity
             setProducts([...products])
@@ -24,11 +25,23 @@ export const StoreProvider = ({children}) =>{
             products.findIndex((i) => i.id === id), 1
         )
         setProducts([...products])
+        if(products.length === 0){
+            setIsInCart(false)
+        }
     }
-    
+
+    const totalProductsPrice = () => {
+        return products.reduce((add, i) => (add += i.price * i.quantity), 0)
+    }
+
+    const cartWidgetCount = () => {
+        return products.reduce((add,i) => (add += i.quantity), 0)
+    }
+
+     
     return(
         <StoreContext.Provider 
-        value = {{ products, addItem, removeItem }}>
+        value = {{ products, addItem, removeItem, totalProductsPrice, isInCart, cartWidgetCount }}>
             {children}
         </StoreContext.Provider>
     )

@@ -1,60 +1,46 @@
 .card-count {
-    max-width: 300px;
-    border-radius: 5px;
-    display: block;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #0B1D51;
-    h5{
-      text-align: justify;
-      padding: 10px 0px ;
-    }
-    ._grid {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
-    ._column {
-        display: inline-block;
-        vertical-align: top;
-        font-size: medium;
-        text-align: left;
-        
-    }
-    ._btn {
-        display: inline-block;
-        background-color: #bdc3c7;
-        border: none;
-        padding: .5em .75em;
-        text-align: center;
-        font-weight: 300;
-        border-radius: 5px;
-      }
-    
-      .product-subtract,
-      .product-plus{
-        width: 15%;
-        background-color: transparent;
-        color:  #797596;
-        text-align: center;
-      }
-      .product-qty {
-        width: 15%;
-        background-color: transparent;
-        text-align: center;
-        color: black;
-        padding: .35em .75em;
-      }
-      .product-add {
-        font-family: 'Bellota', cursive;
-        border: none;
-        font-size: .875em;
-        margin-top: 3.35rem;
-        background-color: #797596;
-        color: #ecf0f1;
-        width: 100%;
-      }
+  max-width: 300px;
+  border-radius: 5px;
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #0B1D51;
+  h5{
+    text-align: justify;
+    padding: 10px 0px ;
   }
+  p{
+    padding: 5px 0px;
+  }
+  .grid {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .column {
+      display: inline-block;
+      vertical-align: top;
+      font-size: medium;
+      text-align: left;
+          
+    }
+    .product-subtract,
+    .product-plus{
+      width: 15%;
+      border: none;
+      background-color: transparent;
+      color:  #797596;
+      text-align: center;
+    }
+    .product-qty {
+      width: 15%;
+      background-color: transparent;
+      text-align: center;
+      color: black;
+      padding: .35em .75em;
+    }
+  }
+  
+}
 
   

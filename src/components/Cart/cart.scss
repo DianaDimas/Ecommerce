@@ -61,7 +61,6 @@
               }
             }
               
-              
             .remove-product {
               border: 0;
               padding: 4px 8px;
@@ -69,7 +68,41 @@
               color: #fff;
               border-radius: 3px;
             }
+
+            .product-line-price:before{
+                content: 'COP $';
+            }
+
+        }
+    }
+    .totals {
+        .totals-item {
+            float: right;
+            clear: both;
+            width: 100%;
+            margin-bottom: 10px;
+                          
+            label {
+                float: left;
+                clear: both;
+                width: 79%;
+                text-align: right;
+            }
+          
+            .totals-value {
+                float: right;
+                width: 21%;
+                text-align: right;
+                &:before{
+                    content: 'COP $';
+                }
+            }
             
         }
+        .t-price{
+            color: #0B1D51;
+            font-weight: bold;
+        }
+        
     }
 }

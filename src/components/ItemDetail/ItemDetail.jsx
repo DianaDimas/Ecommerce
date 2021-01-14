@@ -8,38 +8,17 @@ import './itemdetail.scss'
 const ItemDetail = ({item}) => {
     const stocks = 10
     const initial = 1
-    const [stock, setSotck] = useState(stocks)
-    const [count, setCount] = useState(initial)
     const [add, setAdd] = useState(false)
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState(1)
     const { addItem } = useCartContext()
 
-    const increase = () => { 
-        if(count < stocks){
-            setCount(count + 1)
-            setSotck(stock - 1)
-        }
-    }
-
-    const decrease = () => { 
-        if(count > initial){
-            setCount(count - 1)
-            setSotck(stock + 1)
-        }
-    }
-
-    const onAdd = () => {
-        if (count <= stocks){
-            setAdd(true)
-            setQuantity(count)
-            
-            
-        }console.log(quantity)
+    const itemQuantity = (count) => {
+        setQuantity(count)
     }
 
     const addToCart = () => {
         addItem(item, quantity)
-        console.log(quantity)
+        setAdd(true)
     }
 
 
@@ -53,16 +32,13 @@ const ItemDetail = ({item}) => {
                 <h3>{item.name}</h3>
                 <p className="card-description">{item.description}</p>
                 <p className="card-price">{item.price}</p>
-                <p>Unidades Disponibles: {stock-initial}</p>
-                <ItemCount stock={stocks}
+                <ItemCount stocks={stocks}
+                    stock={stocks}
                     initial={initial}
-                    count={count}
-                    increase={increase}
-                    decrease={decrease}
-                    onAdd={onAdd}
-                    />
-                {add ? <Link to= {'/cart'}><button className="btn-finalizar" onClick={addToCart}>Comprar Ahora</button></Link> : null}
-                
+                    onAdd={itemQuantity}
+                />
+                <button className="btn" onClick={addToCart}>Agregar al Carrito</button>
+                {add ? <Link to= {'/cart'}><button className="btn">Comprar Ahora</button></Link> : null}
             </div>
         </div>
            

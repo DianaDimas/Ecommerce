@@ -38,10 +38,14 @@ export const StoreProvider = ({children}) =>{
         return products.reduce((add,i) => (add += i.quantity), 0)
     }
 
+    const cleanListCart = () => {
+        setProducts([])
+    }
+
      
     return(
         <StoreContext.Provider 
-        value = {{ products, addItem, removeItem, totalProductsPrice, isInCart, cartWidgetCount }}>
+        value = {{ products, addItem, removeItem, totalProductsPrice, isInCart, cartWidgetCount, cleanListCart}}>
             {children}
         </StoreContext.Provider>
     )

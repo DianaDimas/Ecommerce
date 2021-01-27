@@ -6,11 +6,12 @@ import useCartContext from '../../Context/CartContext'
 import './itemdetail.scss'
 
 const ItemDetail = ({item}) => {
-    const stocks = 10
+    const stocks = item.stock
     const initial = 1
     const [add, setAdd] = useState(false)
     const [quantity, setQuantity] = useState(1)
     const { addItem } = useCartContext()
+    
 
     const itemQuantity = (count) => {
         setQuantity(count)
@@ -33,7 +34,6 @@ const ItemDetail = ({item}) => {
                 <p className="card-description">{item.description}</p>
                 <p className="card-price">{item.price}</p>
                 <ItemCount stocks={stocks}
-                    stock={stocks}
                     initial={initial}
                     onAdd={itemQuantity}
                 />

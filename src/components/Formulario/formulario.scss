@@ -1,0 +1,40 @@
+.title{
+    display: block;
+    justify-content: space-between;
+    color: #0B1D51;
+    padding: 10px 0px ;
+    margin-bottom: 15px;
+}
+.form{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-around;
+    margin-top: 20px;
+    //font-family: 'Bellota', cursive;
+    //font-size: 18px;
+    .formInput{
+        display: flex;
+        padding-bottom: 10px;
+        align-items: center;
+        text-align: center;
+        align-content: center;
+        label{
+            color: #797596;
+            padding-right: 5px;
+        }
+        input{
+            font-family: 'Bellota', cursive;
+            font-size: 16px;
+        }
+    }
+}
+.finalize{
+    float: right;
+    border: none;
+    background: #797596;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 10px;
+    font-family: 'Bellota', cursive;
+    padding: 10px;
+}

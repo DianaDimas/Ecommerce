@@ -10,10 +10,10 @@ import { getFirestore } from '../../firebase'
 import Formulario from '../Formulario/Formulario'
 
 const Cart = () => {
-    const {products, removeItem, totalProductsPrice, isInCart, cleanListCart} = useCartContext()
+    const {products, removeItem, totalProductsPrice, cleanListCart} = useCartContext()
     const [showForm, setShowForm] = useState(false)
     const [orderId, setOrderId] = useState("")
-    const [confirmation, setConfirmation] = useState("")
+    const [confirmation, setConfirmation] = useState(false)
     
     const handleRemove = (i) => {
         removeItem(i.id)
@@ -23,25 +23,9 @@ const Cart = () => {
         setShowForm(true)
     }
 
-    /* const createOrder = (buyer) =>{
-        const newOrder = {
-            buyer,
-            products,
-            date: firebase.firestore.Timestamp.fromDate(new Date()),
-            total: totalProductsPrice()
-        }
+    const createOrder = (buyer) =>{
         const db = getFirestore()
         const orders = db.collection('order')
-        orders.add(newOrder).then(
-            ({id}) => {
-                setOrderId(id)
-                setConfirmation(true)
-            }
-        ).catch((e) => {console.log(e)})
-
-    } */
-
-    async function createOrder(buyer){
 
         /* let orderInfo =[]
         products.map((itemInfo) => {
@@ -54,32 +38,50 @@ const Cart = () => {
                 })
             }
         }) */
+        
         const newOrder = {
             buyer,
             products,
             date: firebase.firestore.Timestamp.fromDate(new Date()),
             total: totalProductsPrice()
         }
-        console.log("order", newOrder)
-        const db = getFirestore()
-        const orders = db.collection('order')
         
-        try {
-            const doc = await orders.add(newOrder)
-            setOrderId(doc.id)
-            setConfirmation(true)
-            
-        } catch(e){
-            console.log("Error creando la orden: ", e)
-        }
+        orders.add(newOrder).then(({id}) => {
+                setOrderId(id)
+                setConfirmation(true)
+                cleanListCart()
+            }
+        ).catch((e) => {console.log(e)})
+
     }
 
-    console.log(confirmation)
-    if(confirmation){
-        alert('Su No. de Orden ' + orderId + ' ha sido confirmada')
-        cleanListCart()
-    }
+    console.log("Confirmacion",confirmation)
+    console.log("orderId",orderId)
     
+    if(products.length === 0 && orderId === ""){
+        return (
+            <div className="cart">
+                <div className="heading cf">
+                    <h3>...No hay productos agregados al Carrito...</h3>
+                    <Link to="/" exact>
+                        <button className = "continue">Continuar Comprando</button>
+                    </Link>
+                </div>
+                
+            </div>
+        )
+    }else if(orderId && confirmation){
+        return(
+            <div className="cart">
+                <div className="heading cf">
+                    <h3>Su Orden No. <span className="validation">{orderId}</span> ha sido confirmada</h3>
+                    <Link to="/" exact>
+                        <button className = "continue">Continuar Comprando</button>
+                    </Link>
+                </div>
+            </div>
+        )
+    }
         
     return(
         <section className="cart">
@@ -112,8 +114,7 @@ const Cart = () => {
                 )}
 
             </div>
-            {isInCart ?
-                <div className="totals" >
+            <div className="totals" >
                     <div class="totals-item">
                         <label>Subtotal</label>
                         <div class="totals-value">{totalProductsPrice()}</div>
@@ -129,11 +130,9 @@ const Cart = () => {
                     <div className="totals-item">
                         <button className ="checkout" onClick={handleFinalize}>Iniciar Compra</button>
                     </div>
-                    {showForm ? <Formulario createOrder={createOrder}/> : null}
-                </div>
-                : "...No hay productos agregados al Carrito..."
-            }
-                                                
+                    
+            </div>
+            {showForm ? <Formulario createOrder={createOrder}/> : null}
         </section>
 
     )

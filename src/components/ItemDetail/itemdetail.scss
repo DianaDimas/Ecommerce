@@ -6,11 +6,15 @@
     display: flex;
     text-align: center;
     margin-top: 20px;
+    .img-detail{
+        padding: 10px;
+        img{
+           width: 350px;
+       }
+    }
     .info-detail{
         margin: auto 0;
-        .img-detail{
-            padding: 10px;
-        }
+        
         h3{
             color: #0B1D51;
         }
@@ -40,4 +44,24 @@
         }
     }
     
+}
+
+@media screen and (max-width: 768px) {
+    .card-product-detail {
+        display: block;
+        .img-detail{
+            img{
+                width: 250px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .card-product-detail {
+        display: block;
+        .img-detail{
+            width:175px;
+        }
+    }
 }

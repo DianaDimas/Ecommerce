@@ -38,3 +38,10 @@
     font-family: 'Bellota', cursive;
     padding: 10px;
 }
+
+@media screen and (max-width: 650px) {
+    .form{
+        grid-template-columns: 1fr;
+	    grid-template-rows: auto auto;
+    }
+}

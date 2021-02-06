@@ -6,19 +6,18 @@ import useCartContext from '../../Context/CartContext'
 import {Link} from 'react-router-dom'
 
 const CartWidget = () => {
-    const {cartWidgetCount, isInCart} = useCartContext()
+    const {cartWidgetCount} = useCartContext()
    
         return(
             <>
-            {isInCart ? 
+            
                 <Link to= {'/cart'} className='cart-widget'>
                 <div className="cart-icon">
                     <FontAwesomeIcon icon={faShoppingBasket} />
                     <span className="items">{cartWidgetCount()}</span>
                 </div>
                 </Link>
-                : null
-            }
+                
             </>
         )
 

@@ -10,8 +10,7 @@ const NavBar = () => {
     const [links, setLinks] = useState([
         {nombre: 'Quiénes Somos', url: '/quienesSomos'}, 
         {nombre: 'Mugs', url: '/category/mugs'}, 
-        {nombre: 'Para Vestir', url: '/category/vestir'},
-        {nombre: 'Contáctenos', url: '/contacto'}
+        {nombre: 'Para Vestir', url: '/category/vestir'}
       ])
     
     return(

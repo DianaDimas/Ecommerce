@@ -28,10 +28,6 @@ const Main = ({greeting}) => {
                     <ItemDetailContainer />
                  </Route>
                 
-                <Route path="/contacto">
-                    
-                </Route>
-
                 <Route path="/cart">
                     <Cart/>
                 </Route>

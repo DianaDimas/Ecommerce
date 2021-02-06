@@ -4,8 +4,12 @@ header{
     background: url('../../img/bg-wov.png');
     background-attachment: fixed;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    //display: block;
+    margin-left: auto;
+    margin-right: auto;
     .navbar-items{
         background-color: rgba(255, 255, 255, 0.45);
         border: 2px solid #A1869E;
@@ -13,24 +17,23 @@ header{
         width: 100%;
         max-width: 1200px;
         display: flex;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         font-size: 18px;
         .navbar-logo{
-            display: flex;
-            align-items: center;
             img{
                 width: 50%;
                 padding: 10px 0;
             }
         }
         .nav-menu{
-            display: grid;
-            grid-template-columns: repeat(5, auto);
-            grid-gap: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
             list-style: none;
             width: 50vw;
-            justify-content: end;
             margin-right: 20px;
             .nav-link {
                 color:#0B1D51;
@@ -44,5 +47,55 @@ header{
             
     }
 }
+
+@media screen and (max-width: 650px) {
+    header{
+        width: 100%;
+        .navbar-items{
+            flex-direction: column;
+            font-size: 16px;
+            
+            
+            .navbar-logo{
+                display: block;
+                img{
+                    width: 20vw;
+                    //padding: 10px 0;
+                }
+            }
+            .nav-menu{
+                width: 100%;
+                .nav-link{
+                    padding: 10px 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    header{
+        .navbar-items{
+            flex-direction: column;
+            font-size: 14px;
+            width: 100%;
+            max-width: 350px;
+            .navbar-logo{
+                display: block;
+                img{
+                    width: 30vw;
+                    //padding: 10px 0;
+                }
+            }
+            .nav-menu{
+                width: 100%;
+                flex-direction: column;
+                
+            }
+
+        }
+    }
+}
+
     
     

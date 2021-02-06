@@ -37,7 +37,7 @@ const Cart = () => {
                     price: itemInfo.price
                 })
             }
-        }) */
+        }) */ 
         
         const newOrder = {
             buyer,
@@ -49,10 +49,44 @@ const Cart = () => {
         orders.add(newOrder).then(({id}) => {
                 setOrderId(id)
                 setConfirmation(true)
-                cleanListCart()
+                
             }
         ).catch((e) => {console.log(e)})
 
+        /* const itemsToUpdate = db.collection("ItemCollection").where(
+            firebase.firestore.FieldPath.documentId(),
+            'in',
+            products.map((i) => i.id)
+        )
+        const query = itemsToUpdate.get()
+        const batch = db.batch()
+        const outOfStock = []
+
+        query.docs.forEach((docSnapshot, idx) => {
+            if (docSnapshot.data().stock >= products[idx].quantity) {
+                batch.update(docSnapshot.ref, {
+                    stock: docSnapshot.data().stock - products[idx].quantity,
+                })
+            } else {
+                outOfStock.push({ ...docSnapshot.data(), id: docSnapshot.id })
+            }
+        })
+        if (outOfStock.length === 0) {
+            batch.commit()
+        } */
+        const Itemscollection = db.collection("ItemCollection")
+        const batch = getFirestore().batch()
+
+        products.forEach( p => {
+            batch.update(Itemscollection.doc(p.id),{stock:p.stock - p.quantity})
+        })
+        batch.commit()
+            .then(()=>{
+                    console.log("Termino bien")
+                    cleanListCart()
+            })
+            .catch(err=>console.log(err))
+        
     }
 
     console.log("Confirmacion",confirmation)
@@ -98,17 +132,26 @@ const Cart = () => {
                         <div className="product-image">
                             <img src={item.img} alt={item.id}/>
                         </div>
-                        <div className="product-details">{item.name}</div> 
+                        <div className="product-details">
+                            <h2>{item.name}</h2>
+                            <div className="product-removal">
+                                <button class="remove-product" onClick={()=>handleRemove(item)}> 
+                                    <FontAwesomeIcon icon={faTrashAlt} />
+                                </button>
+                            </div>
+                        </div> 
+                        <div className="product-price">
+                            <label htmlFor="price">Precio </label>
+                            <span className="price">COP ${item.price}</span>
+                        </div>
                         <div className="product-quantity">
-                            <input type="text" placeholder={item.quantity}/>
+                            <label htmlFor="quantity">Cantidad </label>
+                            <span className="quantity">{item.quantity}</span>
                         </div>
-                        <div className="product-price">{item.price}</div>
-                        <div className="product-removal">
-                            <button class="remove-product" onClick={()=>handleRemove(item)}>
-                                <FontAwesomeIcon icon={faTrashAlt} />
-                            </button>
+                        <div className="product-line-price">
+                            <label htmlFor="total">Total </label>
+                            <span className="total">COP ${item.quantity*item.price}</span>
                         </div>
-                        <div className="product-line-price">{item.quantity*item.price}</div>
                     </div>
                     )
                 )}
